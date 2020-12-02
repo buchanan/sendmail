@@ -26,15 +26,36 @@
 	],
 	"icon": "images/sendmail-icon.png",
 	"activationEvents": [
-		"onCommand:sendmail.sendEmail"
+		"onCommand:sendmail.sendEmail",
+		"onCommand:sendmail.sms"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Send Mail",
+			"properties": {
+				"sendmail.pulseAccountID": {
+					"scope": "resource",
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "The accountID that will be used in Pulse SMS requests"
+				}
+			}
+		},
 		"commands": [
 			{
 				"command": "sendmail.sendEmail",
 				"title": "Send Mail: Send Email",
 				"group": "send-mail"
+			},
+			{
+				"command": "sendmail.sms",
+				"title": "Send Mail: Send SMS",
+				"group": "send-sms"
 			}
 		]
 	},
